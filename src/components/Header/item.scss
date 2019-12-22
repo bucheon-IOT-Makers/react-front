@@ -1,0 +1,34 @@
+@import "../color.scss";
+
+.tab-box {
+    height: 50px;
+    display: flex;
+    background-color: rgba($tab-color, 1);
+    border-radius: 6px 6px 0px 0px;
+    font-weight: 700;
+    font-size: 24px;
+
+    a {
+        &:link {
+            color: #dfdfdf;
+        }
+        &:visited {
+            color: #dfdfdf;
+        }
+        &:hover {
+            color: #dfdfdf;
+        }
+    }
+
+    &.disabled {
+        background-color: rgba(#a5b1c2, 0.8);
+        font-weight: 500;
+    }
+}
+
+.link-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
