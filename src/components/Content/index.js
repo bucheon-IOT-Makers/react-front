@@ -6,20 +6,21 @@ import Emotion from "../Emotion";
 import Update from "../Update";
 import "./index.scss";
 
-function Index() {
+function Index({ tab }) {
+    console.log("asdfasd", tab);
     return (
         <div className="content-wrap">
             <div className="left-content-box">
-                <Emotion emoType={"1"}></Emotion>
+                <Emotion emoType={tab["flag"]}></Emotion>
             </div>
             <div className="right-content-box">
                 <div className="top-wrap">
-                    <Dust val={10}></Dust>
-                    <Update date={"2019-12-21"}></Update>
+                    <Dust val={Math.ceil(tab["dust"])}></Dust>
+                    <Update date={"2019-12-22"}></Update>
                 </div>
                 <div className="bottom-wrap">
-                    <Temperature val={10}></Temperature>
-                    <Humidity val={10}></Humidity>
+                    <Temperature val={tab["temperature"]}></Temperature>
+                    <Humidity val={tab["humidity"]}></Humidity>
                 </div>
             </div>
         </div>

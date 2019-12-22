@@ -8,6 +8,7 @@ const tebURL = "http://45.119.146.82:8082/dust/getbyuser";
 const userID = "dddfff22";
 
 export default function Index() {
+    const [now, setNow] = useState("-1");
     const [tab, setTab] = useState([]);
     useEffect(() => {
         axios({
@@ -31,7 +32,8 @@ export default function Index() {
                             temperature: item["temp"], // 온도
                             dust: item["dust"], // 먼지
                             humidity: item["humidity"], // 습도
-                            def: idx === 0 ? true : false
+                            flag: item["flag"],
+                            def: false
                         }
                     ]);
                 });
@@ -41,16 +43,22 @@ export default function Index() {
         });
     }, []);
 
+    // useEffect(() => {
+    //     console.log(now);
+    // }, [now]);
+
     return (
         <Router>
-            <Header tab={tab} setTab={setTab} />
+            <Header tab={tab} setTab={setTab} setNow={setNow} />
             {tab.map((item, idx) => {
                 console.log(item);
                 return (
                     <Route
                         key={idx}
                         path={`/${item.url}`}
-                        component={Content}
+                        component={() => (
+                            <Content tab={tab[Number(now)]}></Content>
+                        )}
                     />
                 );
             })}
